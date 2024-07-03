@@ -12,7 +12,7 @@ LABEL?=$(APPNAME)
 APKFILE ?= $(APPNAME).apk
 PACKAGENAME?=org.yourorg.$(APPNAME)
 RAWDRAWANDROID?=.
-RAWDRAWANDROIDSRCS=$(RAWDRAWANDROID)/android_native_app_glue.c
+RAWDRAWANDROIDSRCS=$(RAWDRAWANDROID)/Include/android_native_app_glue.c
 SRC?=test.c
 
 #We've tested it with android version 22, 24, 28, 29 and 30 and 32.
@@ -89,7 +89,7 @@ CFLAGS+=-Os -DANDROID -DAPPNAME=\"$(APPNAME)\"
 ifeq (ANDROID_FULLSCREEN,y)
 CFLAGS +=-DANDROID_FULLSCREEN
 endif
-CFLAGS+= -I$(RAWDRAWANDROID)/rawdraw -I$(NDK)/sysroot/usr/include -I$(NDK)/sysroot/usr/include/android -I$(NDK)/toolchains/llvm/prebuilt/$(OS_NAME)/sysroot/usr/include -I$(NDK)/toolchains/llvm/prebuilt/$(OS_NAME)/sysroot/usr/include/android -fPIC -I$(RAWDRAWANDROID) -DANDROIDVERSION=$(ANDROIDVERSION)
+CFLAGS+= -I$(RAWDRAWANDROID)/Include/rawdraw -I$(NDK)/sysroot/usr/include -I$(NDK)/sysroot/usr/include/android -I$(NDK)/toolchains/llvm/prebuilt/$(OS_NAME)/sysroot/usr/include -I$(NDK)/toolchains/llvm/prebuilt/$(OS_NAME)/sysroot/usr/include/android -fPIC -I$(RAWDRAWANDROID)/Include -DANDROIDVERSION=$(ANDROIDVERSION)
 LDFLAGS += -lm -lGLESv3 -lEGL -landroid -llog -lOpenSLES
 LDFLAGS += -shared -uANativeActivity_onCreate
 
