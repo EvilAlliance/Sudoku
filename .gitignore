@@ -1,4 +1,6 @@
 *.keystore
 makecapk/
 *.apk
+*.apk.idsig
 AndroidManifest.xml
+output.map
